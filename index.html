@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Flow Music</title>
+  <link rel="stylesheet" href="styles/app.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar panel">
+      <h1>Free Flow Music</h1>
+      <p class="muted">No-ads player with local MP3 uploads, downloads, playlists, and queue.</p>
+
+      <section>
+        <h2>Theme & Design</h2>
+        <label class="tiny">Theme
+          <select id="themeSelect">
+            <option value="midnight">Midnight</option>
+            <option value="sunset">Sunset</option>
+            <option value="forest">Forest</option>
+            <option value="candy">Candy</option>
+          </select>
+        </label>
+        <div class="design-grid">
+          <button class="design-btn" data-design="glass">Glass Card</button>
+          <button class="design-btn" data-design="bold">Bold Contrast</button>
+          <button class="design-btn" data-design="soft">Soft Minimal</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Add from URL</h2>
+        <form id="songForm" class="stack">
+          <input id="title" required placeholder="Song title" />
+          <input id="artist" placeholder="Artist" />
+          <input id="url" type="url" required placeholder="Direct audio URL" />
+          <button type="submit">Add URL Song</button>
+        </form>
+      </section>
+
+      <section>
+        <h2>Upload MP3 Files</h2>
+        <input id="fileInput" type="file" accept="audio/mpeg,.mp3,audio/*" multiple />
+        <p class="muted tiny">Uploaded files are stored locally in your browser (IndexedDB).</p>
+      </section>
+
+      <section>
+        <h2>Import Metadata</h2>
+        <textarea id="importText" rows="3" placeholder='JSON: [{"title":"...","artist":"...","url":"..."}]'></textarea>
+        <div class="inline">
+          <button id="importJsonBtn">Import JSON</button>
+          <button id="importSpotifyBtn">Spotify</button>
+          <button id="importYouTubeBtn">YT</button>
+        </div>
+        <input id="spotifyLink" placeholder="Spotify URL" />
+        <input id="youtubeLink" placeholder="YouTube URL" />
+      </section>
+    </aside>
+
+    <main class="main panel">
+      <section class="inline">
+        <button id="shuffleBtn">Shuffle</button>
+        <button id="repeatBtn">Repeat: Off</button>
+        <button id="clearLibraryBtn">Clear All</button>
+      </section>
+
+      <section>
+        <h2>Now Playing</h2>
+        <div id="nowPlaying" class="now-playing">Nothing selected</div>
+        <audio id="audio" controls preload="none"></audio>
+      </section>
+
+      <section>
+        <h2>Search</h2>
+        <input id="search" placeholder="Search library..." />
+      </section>
+
+      <section>
+        <h2>Library</h2>
+        <ul id="songList" class="list"></ul>
+      </section>
+
+      <section>
+        <h2>Queue</h2>
+        <ul id="queueList" class="list"></ul>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
